@@ -53,7 +53,7 @@ class Media {
   }
   
   class Movie extends Media {
-    constructor(director, title, runTime) {
+    constructor(director, title, runTime, movieCast) {
       super(title);
       this._director = director;
       this._runTime = runTime;
@@ -66,6 +66,10 @@ class Media {
     get runTime() {
       return this._runTime;
     }
+
+    get movieCast() {
+        return this._movieCast
+    }
   }
   
   class CD extends Media {
@@ -73,6 +77,7 @@ class Media {
       super(title);
       this._artist = artist;
       this._playTime = playTime;
+      this._songTitles = [];
     }
   
     get artist() {
@@ -106,5 +111,11 @@ class Media {
   speed.addRating(5);
   console.log(speed.getAverageRating());
   
-  
-  
+  //CD addition
+  const backInBlack = new CD ('AC/DC', 'Back in Black', 9, ['Hells Bells', 'Back in Black']);
+  backInBlack.toggleCheckOutStatus();
+  console.log(backInBlack.isCheckedOut);
+  backInBlack.addRating(5);
+  backInBlack.addRating(4);
+  backInBlack.addRating(5);
+  console.log(backInBlack.getAverageRating());
